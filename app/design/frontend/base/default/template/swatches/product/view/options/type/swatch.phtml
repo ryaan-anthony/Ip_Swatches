@@ -1,0 +1,18 @@
+<?php
+/**
+ * @var $this Ip_Swatches_Block_Product_View_Options_Type_Swatch
+ */
+?>
+<?php $_option = $this->getOption() ?>
+<dt>
+    <label<?php if ($_option->getIsRequire()) echo ' class="required"' ?>><?php if ($_option->getIsRequire()) echo '<em>*</em>' ?><?php echo  $this->htmlEscape($_option->getTitle()) ?></label>
+    <span id="option-<?php echo $_option->getId();?>-selected" class="selected-option">Selected: <span>None Selected</span></span>
+</dt>
+<dd<?php if ($_option->decoratedIsLast){?> class="last"<?php }?>>
+    <ul class="options-list">
+        <?php echo $this->getValuesHtml() ?>
+    </ul>
+    <?php if($_option->getIsRequire()):?>
+        <span id="options-<?php echo $_option->getId();?>-container"></span>
+    <?php endif;?>
+</dd>

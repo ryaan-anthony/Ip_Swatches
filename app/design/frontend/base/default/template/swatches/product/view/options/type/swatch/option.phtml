@@ -1,0 +1,45 @@
+<?php
+/**
+ * @var $this Ip_Swatches_Block_Product_View_Options_Type_Swatch_Options
+ */
+?>
+<?php
+$_option = $this->getOption();
+$_value = $this->getValue();
+?>
+<li id="value-<?php echo $_value->getOptionTypeId();?>-container">
+    <input type="radio"
+        class="radio <?php echo $_option->getIsRequire() ? 'validate-one-required-by-name' : '';?> product-custom-option swatch-custom-option"
+        <?php echo $this->getIsRequireClass() ? '' : ' onclick="opConfig.reloadPrice()"';?>
+        name="options[<?php echo $_option->getId()?>]"
+        id="<?php echo $this->getElementId();?>"
+        value="<?php echo $_value->getOptionTypeId();?>"
+        <?php echo $this->getIsChecked();?>
+        price="<?php echo $this->getPrice();?>"
+        />
+    <span class="label">
+        <label for="<?php echo $this->getElementId();?>">
+            <img src="<?php echo $this->getSwatchImage();?>" width="50" height="50" title="<?php echo $this->htmlEscape($this->getOptionTitle());?>"/>
+            <span class="option-title"><?php echo $_value->getTitle();?></span>
+            <span class="price-notice">
+                <span class="price"><?php echo $this->getPriceStr();?></span>
+            </span>
+        </label>
+    </span>
+    <?php if($_option->getIsRequire()):?>
+        <script type="text/javascript">
+            //<![CDATA[
+            $('<?php echo $this->getElementId();?>').advaiceContainer = 'options-<?php echo $_option->getId();?>-container';
+            $('<?php echo $this->getElementId();?>').callbackFunction = 'validateOptionsCallback';
+            $('<?php echo $this->getElementId();?>').observe('change', function(event) {
+                $('value-<?php echo $_value->getOptionTypeId();?>-container').up().select('li').each(function(elem){
+                    elem.removeClassName("swatch-selected");
+                });
+                $('value-<?php echo $_value->getOptionTypeId();?>-container').addClassName("swatch-selected");
+                var selected = $('value-<?php echo $_value->getOptionTypeId();?>-container').select('.option-title').pluck('innerHTML');
+                $('option-<?php echo $_option->getId();?>-selected').select('span')[0].update(selected);
+            });
+            //]]>
+        </script>
+    <?php endif;?>
+</li>

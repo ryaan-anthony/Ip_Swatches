@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<config>
+    <menu>
+        <catalog>
+            <children>
+                <swatches translate="title">
+                    <title>Manage Swatches</title>
+                    <action>adminhtml/swatch/index</action>
+                    <sort_order>300</sort_order>
+                </swatches>
+            </children>
+        </catalog>
+    </menu>
+</config>

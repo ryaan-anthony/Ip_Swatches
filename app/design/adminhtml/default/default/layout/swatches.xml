@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<layout>
+    <adminhtml_swatch_index>
+        <reference name="content">
+            <block type="swatches/adminhtml_input" name="input" />
+        </reference>
+    </adminhtml_swatch_index>
+
+    <adminhtml_swatch_edit>
+        <reference name="content">
+            <block type="swatches/adminhtml_input_edit" name="input_edit" />
+        </reference>
+    </adminhtml_swatch_edit>
+</layout>

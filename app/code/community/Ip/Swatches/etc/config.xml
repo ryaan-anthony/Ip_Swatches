@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Ip_Swatches>
+            <version>0.1.0</version>
+        </Ip_Swatches>
+    </modules>
+    <global>
+        <catalog>
+            <product>
+                <options>
+                    <custom>
+                        <groups>
+                            <swatch translate="label">
+                                <label>Color Swatches</label>
+                                <render>Ip_Swatches_Block_Adminhtml_Catalog_Product_Edit_Tab_Options_Type_Swatch</render>
+                                <types>
+                                    <!--types are dynamically loaded by Ip_Swatches_Model_System_Config_Source_Product_Options_Type-->
+                                </types>
+                            </swatch>
+                        </groups>
+                    </custom>
+                </options>
+            </product>
+        </catalog>
+        <blocks>
+            <swatches>
+                <class>Ip_Swatches_Block</class>
+            </swatches>
+            <adminhtml>
+                <rewrite>
+                    <!--add swatches/product/edit/options/type/swatch.phtml template-->
+                    <catalog_product_edit_tab_options_option>Ip_Swatches_Block_Adminhtml_Catalog_Product_Edit_Tab_Options_Option</catalog_product_edit_tab_options_option>
+                </rewrite>
+            </adminhtml>
+            <catalog>
+                <rewrite>
+                    <!--display swatches on the frontend-->
+                    <product_view_options>Ip_Swatches_Block_Product_View_Options</product_view_options>
+                </rewrite>
+            </catalog>
+            <sales>
+                <rewrite>
+                    <!--add swatches to email order items-->
+                    <order_email_items_order_default>Ip_Swatches_Block_Sales_Email_Items_Order_Default</order_email_items_order_default>
+                </rewrite>
+            </sales>
+        </blocks>
+        <models>
+            <swatches>
+                <class>Ip_Swatches_Model</class>
+                <resourceModel>swatch_resource</resourceModel>
+            </swatches>
+            <swatch_resource>
+                <class>Ip_Swatches_Model_Resource</class>
+                <entities>
+                    <input>
+                        <table>catalog_product_swatches</table>
+                    </input>
+                    <input_option>
+                        <table>catalog_product_swatches_option</table>
+                    </input_option>
+                </entities>
+            </swatch_resource>
+            <adminhtml>
+                <rewrite>
+                    <!--dynamically add new swatches-->
+                    <system_config_source_product_options_type>Ip_Swatches_Model_System_Config_Source_Product_Options_Type</system_config_source_product_options_type>
+                </rewrite>
+            </adminhtml>
+            <catalog>
+                <rewrite>
+                    <!--add swatch group to product options-->
+                    <product_option_type_swatch>Ip_Swatches_Model_Product_Option_Type_Swatch</product_option_type_swatch>
+                    <product_option>Ip_Swatches_Model_Product_Option</product_option>
+                </rewrite>
+            </catalog>
+        </models>
+        <resources>
+            <swatches_setup>
+                <setup>
+                    <module>Ip_Swatches</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+            </swatches_setup>
+        </resources>
+    </global>
+
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <swatches>
+                    <file>swatches.xml</file>
+                </swatches>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <frontend>
+        <layout>
+            <updates>
+                <swatches>
+                    <file>swatches.xml</file>
+                </swatches>
+            </updates>
+        </layout>
+    </frontend>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <!--handle saving and editing swatches-->
+                        <swatches before="Mage_Adminhtml">Ip_Swatches_Adminhtml</swatches>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <default>
+        <catalog>
+            <product_options>
+                <swatch_width>50</swatch_width>
+                <swatch_height>50</swatch_height>
+            </product_options>
+        </catalog>
+    </default>
+</config>

@@ -1,0 +1,26 @@
+<?php
+/**
+ * @var $this Mage_Core_Block_Template
+ */
+?>
+<tr class="swatch-option option-{{id}}">
+    <td>
+        <img src="<?php echo Mage::getBaseUrl('media');?>{{image_url}}" height="25" width="25"/>
+        <input type="hidden" class="is_delete" name="product[options][{{id}}][values][{{value_id}}][is_delete]" />
+        <input type="hidden" name="product[options][{{id}}][values][{{value_id}}][swatch_option]" value="{{swatch_option}}"/>
+        <input type="hidden" name="product[options][{{id}}][values][{{value_id}}][price_type]" value="{{price_type}}"/>
+        <input type="hidden" name="product[options][{{id}}][values][{{value_id}}][option_type_id]" value="{{option_type_id}}"/>
+    </td>
+    <td>
+        <input type="text" name="product[options][{{id}}][values][{{value_id}}][title]" value="{{title}}" class="required-entry input-text select-type-title"/>
+    </td>
+    <td>
+        <input type="text" name="product[options][{{id}}][values][{{value_id}}][price]" value="{{price}}" class="input-text validate-number product-option-price"/>
+    </td>
+    <td>
+        <input type="text" name="product[options][{{id}}][values][{{value_id}}][sku]" value="{{sku}}" class="input-text"/>
+    </td>
+    <td>
+        <input type="text" name="product[options][{{id}}][values][{{value_id}}][sort_order]" value="{{sort_order}}" class="validate-zero-or-greater input-text"/>
+    </td>
+</tr>

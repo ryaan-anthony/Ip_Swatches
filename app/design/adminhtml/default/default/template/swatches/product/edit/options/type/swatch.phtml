@@ -1,0 +1,28 @@
+<?php
+/**
+ * @var $this Ip_Swatches_Block_Adminhtml_Catalog_Product_Edit_Tab_Options_Type_Swatch
+ */
+?>
+<script type="text/javascript">
+//<![CDATA[
+    OptionTemplateSwatch = <?php echo $this->renderSwatchContainer();?>;
+    OptionTemplateSwatchRow = <?php echo $this->renderSwatch();?>;
+    swatchOptionType = {
+        div : 'swatch_option_type_row',
+        templateSyntax : /(^|.|\r|\n)({{(\w+)}})/,
+        templateText : OptionTemplateSwatchRow,
+        add : function(data, option_id) {
+            this.template = new Template(this.templateText, this.templateSyntax);
+            if(data.option_type_id !== -1){
+                data.id = data.option_id;
+                data.value_id = data.option_type_id;
+            } else {
+                data.id = option_id;
+                data.value_id = data.item_count;
+            }
+            this.itemCount = data.item_count;
+            Element.insert($(this.div+'_'+data.id), {'bottom':this.template.evaluate(data)});
+        }
+    }
+//]]>
+</script>
