@@ -2,5 +2,9 @@
     "name": "ryaan-anthony/ip_swatches",
     "description": "Create/edit swatches which are dynamically added as predefined product custom options. Set default price/sku/sort or define per product.",
     "keywords": ["swatches", "magento", "custom options"],
-    "version": "0.1.0"
+    "version": "0.1.0",
+    "dist": {
+        "url": "https://github.com/ryaan-anthony/Ip_Swatches/archive/master.zip",
+        "type": "zip"
+    }
 }
